@@ -989,6 +989,7 @@ func (f *File) ReadFrom(r io.Reader) (int64, error) {
 			n, err := r.Read(b)
 			if err != nil {
 				firstErr = err
+				break
 			}
 			f.c.dispatchRequest(ch, sshFxpWritePacket{
 				Id:     f.c.nextId(),
